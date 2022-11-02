@@ -82,6 +82,7 @@ class ProductController extends Controller
         return redirect('/');
     }
 
+    // Open Edit Product Page
     public function edit($id) {
         $product = Product::find($id);
         $category = Category::all();
@@ -91,6 +92,7 @@ class ProductController extends Controller
         ]);
     }
 
+    // Update Product
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
             'product_name' => 'required|max:40',
@@ -125,8 +127,8 @@ class ProductController extends Controller
         $product->update();
         return redirect('/');        
     }
+
     // Delete Product
-    
     public function destroy($id) {
         $product =  Product::find($id);
         if($product->delete()) {

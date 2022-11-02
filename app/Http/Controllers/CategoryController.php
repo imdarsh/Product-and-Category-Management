@@ -10,11 +10,24 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    //
+    // Page Showing all Categories, Sub-Categories and Child-Categories
+    public function categoryindex() {
+        $category = Category::all();
+        $subcategory = SubCategory::with('category')->get();
+        $childcategory = ChildCategory::with('subcategory')->with('category')->get();
+        return view('admin.categories.index',[
+            'category' => $category,
+            'subcategory' => $subcategory,
+            'childcategory' => $childcategory
+        ]);
+    }
+
+    // Open Create Category Page
     public function createcategory() {
         return view('admin.categories.createcategory');
     }
 
+    // Open Create Sub-Category Page
     public function createsubcategory() {
         $category = Category::all();
         return view('admin.categories.createsubcategory',[
@@ -22,6 +35,15 @@ class CategoryController extends Controller
         ]);
     }
 
+    // Open Create Child-Category Page
+    public function createchildcategory() {
+        $category = Category::all();
+        return view('admin.categories.createchildcategory',[
+            'category' => $category
+        ]);
+    }
+
+    // Store Category
     public function storecategory(Request $request) {
         $validator = Validator::make($request->all(), [
             'category' => 'required'
@@ -37,17 +59,8 @@ class CategoryController extends Controller
         return redirect('/category');
     }
 
-    public function categoryindex() {
-        $category = Category::all();
-        $subcategory = SubCategory::with('category')->get();
-        $childcategory = ChildCategory::with('subcategory')->with('category')->get();
-        return view('admin.categories.index',[
-            'category' => $category,
-            'subcategory' => $subcategory,
-            'childcategory' => $childcategory
-        ]);
-    }
 
+    // Store Sub-Category
     public function storesubcategory(Request $request) {
         
         $validator = Validator::make($request->all(), [
@@ -67,19 +80,7 @@ class CategoryController extends Controller
         return redirect('/category');
     }
 
-    public function createchildcategory() {
-        $category = Category::all();
-        return view('admin.categories.createchildcategory',[
-            'category' => $category
-        ]);
-    }
-
-    public function getsubcat(Request $request) {
-        // return $request->cat_id;
-        $data = SubCategory::where("cat_id",$request->cat_id)->get();
-        return response()->json($data);
-    }
-
+    // Store Child-Category
     public function storechildcategory(Request $request) {
         
         $validator = Validator::make($request->all(), [
@@ -100,6 +101,14 @@ class CategoryController extends Controller
         return  redirect('/category');
     }
 
+    // Fetch Sub-Categories
+    public function getsubcat(Request $request) {
+        // return $request->cat_id;
+        $data = SubCategory::where("cat_id",$request->cat_id)->get();
+        return response()->json($data);
+    }
+
+    // Fetch Child-Categories
     public function getchildcat(Request $request) {
         $childcat = ChildCategory::where('cat_id',$request->cat_id)->where('subcat_id',$request->subcat_id)->get();
         return response()->json($childcat);
