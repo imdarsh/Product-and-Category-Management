@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
+    
     // List Products
     public function index() {
         $products = Product::all();
@@ -40,7 +41,7 @@ class ProductController extends Controller
 
     // Store Product
     public function store(Request $request) {
-        // dd($request->images);
+        // Validation for store method
         $validator = Validator::make($request->all(), [
             'product_name' => 'required|max:40',
             'product_category' => 'required',
