@@ -15,12 +15,11 @@ Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
 Route::get('/products/details/{id}',[ProductController::class,'detail']);
 
 // Category Routes
-Route::get('/category/create',[CategoryController::class,'createcategory']);
+Route::get('/ctegory/create',[CategoryController::class,'createcategory']);
 Route::post('/category/store', [CategoryController::class, 'storecategory']);
 Route::get('/category',[CategoryController::class,'categoryindex']);
 
 // Sub Category Routes
-// Route::get('/subcategory',[CategoryController::class,'subcategoryindex']);
 Route::get('/subcategory/create',[CategoryController::class,'createsubcategory']);
 Route::post('/subcategory/store',[CategoryController::class,'storesubcategory']);
 
