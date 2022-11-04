@@ -6,7 +6,8 @@
     <a href="/category/create" class="btn btn-primary my-2">Create Category</a>
     <a href="/subcategory/create" class="btn btn-primary my-2">Create Sub-Category</a>
     <a href="/childcategory/create" class="btn btn-primary my-2">Create ChildCategory</a>
-        <h4>Category</h4>
+    <hr />  
+    <h4>Category</h4>
     @foreach($category as $cat)
        <p> {{ $cat->category }}</p>
     @endforeach
