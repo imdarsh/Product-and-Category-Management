@@ -26,9 +26,8 @@
                     
                 </div>
                 @endforeach
-                <p class="text-center my-5">No Gallery Images</p>
                 @else
-
+                <p class="text-center my-5">No Gallery Images</p>
                 @endif
             </div>
     </div>
