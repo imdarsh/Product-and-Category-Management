@@ -16,6 +16,10 @@
         <p><b>Product MRP:</b> {{ $product->product_price }}</p><hr />
         <p><b>Product Discounted Price:</b> {{ $product->discounted_price }}</p><hr />
         <h4 class="mt-5">Gallery Images</h4>
+<<<<<<< HEAD
+=======
+        <a class="btn btn-primary" href="/products/addgalleryimage/{{ $product->id }}">Add Gallery Image</a>
+>>>>>>> 2dda92a (Product and Category Management)
         <div class="row">
                 @if($images)
                 @foreach($images as $img)
