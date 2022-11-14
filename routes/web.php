@@ -35,10 +35,8 @@ Route::post('/getchildcat',[CategoryController::class,'getchildcat']);
 // Gallery Image Routes
 Route::get('/products/editgallery/{id}',[ImageController::class,'editgalleryimage']);
 Route::put('/products/updategallery/{id}',[ImageController::class,'updategalleryimage']);
-<<<<<<< HEAD
 Route::get('/products/deletegallery/{id}',[ImageController::class,'deletegalleryimage']);
-=======
+
 Route::get('/products/deletegallery/{id}',[ImageController::class,'deletegalleryimage']);
 Route::get('products/addgalleryimage/{id}',[ImageController::class, 'addgalleryimage']);
 Route::post('/products/storegalleryimage/{id}',[ImageController::class,'storegalleryimage']);
->>>>>>> 2dda92a (Product and Category Management)
